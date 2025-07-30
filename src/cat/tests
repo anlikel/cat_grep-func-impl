@@ -1,0 +1,135 @@
+#!/bin/bash
+
+mkdir -p test_files
+echo -e "a\nas\n\n\n\nasd\n\n\n\nasdf\t" > 1.txt
+echo -e "b\nbs\n\n\n\nbsd\n\n\n\nbsdf\t" > 2.txt
+
+echo "Test 1: Single file no args"
+./s21_cat 1.txt > test_files/output1.txt
+cat 1.txt > test_files/expected1.txt
+diff test_files/output1.txt test_files/expected1.txt && echo "Test 1 PASSED" || echo "Test 1 FAILED"
+
+echo "Test 2: 2 files no args"
+./s21_cat 1.txt 2.txt > test_files/output2.txt
+cat 1.txt 2.txt > test_files/expected2.txt
+diff test_files/output2.txt test_files/expected2.txt && echo "Test 2 PASSED" || echo "Test 2 FAILED"
+
+echo "Test 3: Single file -n"
+./s21_cat -n 1.txt > test_files/output3.txt
+cat -n 1.txt > test_files/expected3.txt
+diff test_files/output3.txt test_files/expected3.txt && echo "Test 3 PASSED" || echo "Test 3 FAILED"
+
+echo "Test 4: 2 files -n"
+./s21_cat -n 1.txt 2.txt > test_files/output4.txt
+cat -n 1.txt 2.txt > test_files/expected4.txt
+diff test_files/output4.txt test_files/expected4.txt && echo "Test 4 PASSED" || echo "Test 4 FAILED"
+
+echo "Test 5: Single file -b"
+./s21_cat -b 1.txt > test_files/output5.txt
+cat -b 1.txt > test_files/expected5.txt
+diff test_files/output5.txt test_files/expected5.txt && echo "Test 5 PASSED" || echo "Test 5 FAILED"
+
+echo "Test 6: 2 files -b"
+./s21_cat -b 1.txt 2.txt > test_files/output6.txt
+cat -b 1.txt 2.txt > test_files/expected6.txt
+diff test_files/output6.txt test_files/expected6.txt && echo "Test 6 PASSED" || echo "Test 6 FAILED"
+
+echo "Test 7: Single file -e"
+./s21_cat -e 1.txt > test_files/output7.txt
+cat -e 1.txt > test_files/expected7.txt
+diff test_files/output7.txt test_files/expected7.txt && echo "Test 7 PASSED" || echo "Test 7 FAILED"
+
+echo "Test 8: 2 files -e"
+./s21_cat -e 1.txt 2.txt > test_files/output8.txt
+cat -e 1.txt 2.txt > test_files/expected8.txt
+diff test_files/output8.txt test_files/expected8.txt && echo "Test 8 PASSED" || echo "Test 8 FAILED"
+
+echo "Test 9: Single file -s"
+./s21_cat -s 1.txt > test_files/output9.txt
+cat -s 1.txt > test_files/expected9.txt
+diff test_files/output9.txt test_files/expected9.txt && echo "Test 9 PASSED" || echo "Test 9 FAILED"
+
+echo "Test 10: 2 files -s"
+./s21_cat -s 1.txt 2.txt > test_files/output10.txt
+cat -s 1.txt 2.txt > test_files/expected10.txt
+diff test_files/output10.txt test_files/expected10.txt && echo "Test 10 PASSED" || echo "Test 10 FAILED"
+
+echo "Test 11: Single file -t"
+./s21_cat -t 1.txt > test_files/output11.txt
+cat -t 1.txt > test_files/expected11.txt
+diff test_files/output11.txt test_files/expected11.txt && echo "Test 11 PASSED" || echo "Test 11 FAILED"
+
+echo "Test 12: 2 files -t"
+./s21_cat -t 1.txt 2.txt > test_files/output12.txt
+cat -t 1.txt 2.txt > test_files/expected12.txt
+diff test_files/output12.txt test_files/expected12.txt && echo "Test 12 PASSED" || echo "Test 12 FAILED"
+
+echo "Test 13: Single file --number-nonblank"
+./s21_cat --number-nonblank 1.txt > test_files/output13.txt
+cat --number-nonblank 1.txt > test_files/expected13.txt
+diff test_files/output13.txt test_files/expected13.txt && echo "Test 13 PASSED" || echo "Test 13 FAILED"
+
+echo "Test 14: 2 files --number-nonblank"
+./s21_cat --number-nonblank 1.txt 2.txt > test_files/output14.txt
+cat --number-nonblank 1.txt 2.txt > test_files/expected14.txt
+diff test_files/output14.txt test_files/expected14.txt && echo "Test 14 PASSED" || echo "Test 14 FAILED"
+
+echo "Test 15: Single file --number"
+./s21_cat --number 1.txt > test_files/output15.txt
+cat --number 1.txt > test_files/expected15.txt
+diff test_files/output15.txt test_files/expected15.txt && echo "Test 15 PASSED" || echo "Test 15 FAILED"
+
+echo "Test 16: 2 files --number"
+./s21_cat --number 1.txt 2.txt > test_files/output16.txt
+cat --number 1.txt 2.txt > test_files/expected16.txt
+diff test_files/output16.txt test_files/expected16.txt && echo "Test 16 PASSED" || echo "Test 16 FAILED"
+
+echo "Test 17: Single file -E"
+./s21_cat -E 1.txt > test_files/output17.txt
+cat -E 1.txt > test_files/expected17.txt
+diff test_files/output17.txt test_files/expected17.txt && echo "Test 17 PASSED" || echo "Test 17 FAILED"
+
+echo "Test 18: 2 files -E"
+./s21_cat -E 1.txt 2.txt > test_files/output18.txt
+cat -E 1.txt 2.txt > test_files/expected18.txt
+diff test_files/output18.txt test_files/expected18.txt && echo "Test 18 PASSED" || echo "Test 18 FAILED"
+
+echo "Test 19: Single file --squeeze-blank"
+./s21_cat --squeeze-blank 1.txt > test_files/output19.txt
+cat --squeeze-blank 1.txt > test_files/expected19.txt
+diff test_files/output19.txt test_files/expected19.txt && echo "Test 19 PASSED" || echo "Test 19 FAILED"
+
+echo "Test 20: 2 files --squeeze-blank"
+./s21_cat --squeeze-blank 1.txt 2.txt > test_files/output20.txt
+cat --squeeze-blank 1.txt 2.txt > test_files/expected20.txt
+diff test_files/output20.txt test_files/expected20.txt && echo "Test 20 PASSED" || echo "Test 20 FAILED"
+
+echo "Test 21: Single file -T"
+./s21_cat -T 1.txt > test_files/output21.txt
+cat -T 1.txt > test_files/expected21.txt
+diff test_files/output21.txt test_files/expected21.txt && echo "Test 21 PASSED" || echo "Test 21 FAILED"
+
+echo "Test 22: 2 files -T"
+./s21_cat -T 1.txt 2.txt > test_files/output22.txt
+cat -T 1.txt 2.txt > test_files/expected22.txt
+diff test_files/output22.txt test_files/expected22.txt && echo "Test 22 PASSED" || echo "Test 22 FAILED"
+
+echo "Test 23: Single file no args wrong file_name"
+./s21_cat 1.tx > test_files/output23.txt
+cat 1.tx > test_files/expected23.txt
+diff test_files/output23.txt test_files/expected23.txt && echo "Test 23 PASSED" || echo "Test 23 FAILED"
+
+echo "Test 24: 2 files no args wrong file_name"
+./s21_cat 1.txt 2.tx > test_files/output24.txt
+cat 1.txt 2.tx > test_files/expected24.txt
+diff test_files/output24.txt test_files/expected24.txt && echo "Test 24 PASSED" || echo "Test 24 FAILED"
+
+echo "Test 25: Single file -t -v"
+./s21_cat -t -v 1.txt > test_files/output25.txt
+cat -t -v 1.txt > test_files/expected25.txt
+diff test_files/output25.txt test_files/expected25.txt && echo "Test 25 PASSED" || echo "Test 25 FAILED"
+
+echo "Test 26: 2 files -t -v"
+./s21_cat -t -v 1.txt 2.txt > test_files/output26.txt
+cat -t -v 1.txt 2.txt > test_files/expected26.txt
+diff test_files/output26.txt test_files/expected26.txt && echo "Test 26 PASSED" || echo "Test 26 FAILED"

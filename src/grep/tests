@@ -1,0 +1,115 @@
+#!/bin/bash
+
+mkdir -p test_files
+echo -e "a\nas\nasd\n\n\n\n\n\nasdf" > 1.txt
+echo -e "b\nbs\nbsd\n\n\n\n\n\nbsdf" > 2.txt
+
+echo "Test 1: Single file no args"
+./s21_grep asd 1.txt > test_files/output1.txt
+grep asd 1.txt > test_files/expected1.txt
+diff test_files/output1.txt test_files/expected1.txt && echo "Test 1 PASSED" || echo "Test 1 FAILED"
+
+echo "Test 2: 2 files no args"
+./s21_grep asd 1.txt 2.txt > test_files/output2.txt
+grep asd 1.txt 2.txt > test_files/expected2.txt
+diff test_files/output2.txt test_files/expected2.txt && echo "Test 2 PASSED" || echo "Test 2 FAILED"
+
+echo "Test 3: Single file no args -e"
+./s21_grep -e asd -e asdf 1.txt > test_files/output3.txt
+grep -e asd -e asdf 1.txt > test_files/expected3.txt
+diff test_files/output3.txt test_files/expected3.txt && echo "Test 3 PASSED" || echo "Test 3 FAILED"
+
+echo "Test 4: 2 files no args -e"
+./s21_grep -e asd -e bsd 1.txt 2.txt > test_files/output4.txt
+grep -e asd -e bsd 1.txt 2.txt > test_files/expected4.txt
+diff test_files/output4.txt test_files/expected4.txt && echo "Test 4 PASSED" || echo "Test 4 FAILED"
+
+echo "Test 5: Single file -i"
+./s21_grep -i Asdf 1.txt > test_files/output5.txt
+grep -i Asdf 1.txt > test_files/expected5.txt
+diff test_files/output5.txt test_files/expected5.txt && echo "Test 5 PASSED" || echo "Test 5 FAILED"
+
+echo "Test 6: 2 files -i -e"
+./s21_grep -i -e Asdf -e Bsdf 1.txt 2.txt > test_files/output6.txt
+grep -i -e Asdf -e Bsdf 1.txt 2.txt > test_files/expected6.txt
+diff test_files/output6.txt test_files/expected6.txt && echo "Test 6 PASSED" || echo "Test 6 FAILED"
+
+echo "Test 7: Single file -v"
+./s21_grep -v asdf 1.txt > test_files/output7.txt
+grep -v asdf 1.txt > test_files/expected7.txt
+diff test_files/output7.txt test_files/expected7.txt && echo "Test 7 PASSED" || echo "Test 7 FAILED"
+
+echo "Test 8: 2 files -v -e"
+./s21_grep -v -e asdf -e bsdf 1.txt 2.txt > test_files/output8.txt
+grep -v -e asdf -e bsdf 1.txt 2.txt > test_files/expected8.txt
+diff test_files/output8.txt test_files/expected8.txt && echo "Test 8 PASSED" || echo "Test 8 FAILED"
+
+echo "Test 9: Single file -c"
+./s21_grep -c as 1.txt > test_files/output9.txt
+grep -c as 1.txt > test_files/expected9.txt
+diff test_files/output9.txt test_files/expected9.txt && echo "Test 9 PASSED" || echo "Test 9 FAILED"
+
+echo "Test 10: 2 files -c -e"
+./s21_grep -c -e as -e bs 1.txt 2.txt > test_files/output10.txt
+grep -c -e as -e bs 1.txt 2.txt > test_files/expected10.txt
+diff test_files/output10.txt test_files/expected10.txt && echo "Test 10 PASSED" || echo "Test 10 FAILED"
+
+echo "Test 11: Single file -l"
+./s21_grep -l as 1.txt > test_files/output11.txt
+grep -l as 1.txt > test_files/expected11.txt
+diff test_files/output11.txt test_files/expected11.txt && echo "Test 11 PASSED" || echo "Test 11 FAILED"
+
+echo "Test 12: 2 files -l -e"
+./s21_grep -l -e as -e bs 1.txt 2.txt > test_files/output12.txt
+grep -l -e as -e bs 1.txt 2.txt > test_files/expected12.txt
+diff test_files/output12.txt test_files/expected12.txt && echo "Test 12 PASSED" || echo "Test 12 FAILED"
+
+echo "Test 13: Single file -n"
+./s21_grep -n as 1.txt > test_files/output13.txt
+grep -n as 1.txt > test_files/expected13.txt
+diff test_files/output13.txt test_files/expected13.txt && echo "Test 13 PASSED" || echo "Test 13 FAILED"
+
+echo "Test 14: 2 files -n -e"
+./s21_grep -n -e as -e bs 1.txt 2.txt > test_files/output14.txt
+grep -n -e as -e bs 1.txt 2.txt > test_files/expected14.txt
+diff test_files/output14.txt test_files/expected14.txt && echo "Test 14 PASSED" || echo "Test 14 FAILED"
+
+echo "Test 15: Single file -i -n"
+./s21_grep -i -n as 1.txt > test_files/output15.txt
+grep -i -n as 1.txt > test_files/expected15.txt
+diff test_files/output15.txt test_files/expected15.txt && echo "Test 15 PASSED" || echo "Test 15 FAILED"
+
+echo "Test 16: 2 files -i -n -e"
+./s21_grep -i -n -e As -e Bs 1.txt 2.txt > test_files/output16.txt
+grep -i -n -e As -e Bs 1.txt 2.txt > test_files/expected16.txt
+diff test_files/output16.txt test_files/expected16.txt && echo "Test 16 PASSED" || echo "Test 16 FAILED"
+
+echo "Test 17: Single file -v -n"
+./s21_grep -v -n as 1.txt > test_files/output17.txt
+grep -v -n as 1.txt > test_files/expected17.txt
+diff test_files/output17.txt test_files/expected17.txt && echo "Test 17 PASSED" || echo "Test 17 FAILED"
+
+echo "Test 18: 2 files -v -n -e"
+./s21_grep -v -n -e as -e bs 1.txt 2.txt > test_files/output18.txt
+grep -v -n -e as -e bs 1.txt 2.txt > test_files/expected18.txt
+diff test_files/output18.txt test_files/expected18.txt && echo "Test 18 PASSED" || echo "Test 18 FAILED"
+
+echo "Test 19: Single file -i -v -n"
+./s21_grep -i -v -n As 1.txt > test_files/output19.txt
+grep -i -v -n As 1.txt > test_files/expected19.txt
+diff test_files/output19.txt test_files/expected19.txt && echo "Test 19 PASSED" || echo "Test 19 FAILED"
+
+echo "Test 20: 2 files -i -v -n -e"
+./s21_grep -i -v -n -e As -e Bs 1.txt 2.txt > test_files/output20.txt
+grep -i -v -n -e As -e Bs 1.txt 2.txt > test_files/expected20.txt
+diff test_files/output20.txt test_files/expected20.txt && echo "Test 20 PASSED" || echo "Test 20 FAILED"
+
+echo "Test 21: Single file no args wrong filename"
+./s21_grep asd 1.tx > test_files/output21.txt
+grep asd 1.tx > test_files/expected21.txt
+diff test_files/output21.txt test_files/expected21.txt && echo "Test 21 PASSED" || echo "Test 21 FAILED"
+
+echo "Test 22: 2 files no args wrong file_name"
+./s21_grep asd 1.txt 2.tx > test_files/output22.txt
+grep asd 1.txt 2.tx > test_files/expected22.txt
+diff test_files/output22.txt test_files/expected22.txt && echo "Test 22 PASSED" || echo "Test 22 FAILED"
